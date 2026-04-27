@@ -361,7 +361,6 @@
       transition: all 0.3s;
       position: relative;
       overflow: hidden;
-      cursor: pointer;
     }
     .project-card::before {
       content: '';
@@ -751,13 +750,7 @@
     }, { threshold: 0.3 });
     bars.forEach(b => barObserver.observe(b));
 
-    // Project cards clickable
-    document.querySelectorAll('.project-card').forEach(card => {
-      const link = card.querySelector('.project-link:not([style*="pointer-events:none"])');
-      if (link && link.href && link.href !== '#') {
-        card.addEventListener('click', () => window.open(link.href, '_blank'));
-      }
-    });
+    // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry, i) => {

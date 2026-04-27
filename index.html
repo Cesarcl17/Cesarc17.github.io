@@ -104,24 +104,29 @@
       overflow: hidden;
     }
     .hero-bg {
-      position: absolute;
+      position: fixed;
       inset: 0;
       background:
-        radial-gradient(ellipse 60% 50% at 80% 20%, rgba(200,241,53,0.07) 0%, transparent 70%),
-        radial-gradient(ellipse 50% 40% at 10% 80%, rgba(255,79,216,0.06) 0%, transparent 70%),
-        radial-gradient(ellipse 40% 60% at 50% 50%, rgba(0,229,255,0.04) 0%, transparent 70%);
+        radial-gradient(ellipse 70% 60% at 80% 20%, rgba(200,241,53,0.09) 0%, transparent 65%),
+        radial-gradient(ellipse 60% 50% at 10% 80%, rgba(255,79,216,0.08) 0%, transparent 65%),
+        radial-gradient(ellipse 50% 70% at 50% 50%, rgba(0,229,255,0.05) 0%, transparent 65%);
+      pointer-events: none;
+      z-index: 0;
     }
     .hero-grid {
-      position: absolute;
+      position: fixed;
       inset: 0;
       background-image:
         linear-gradient(var(--border) 1px, transparent 1px),
         linear-gradient(90deg, var(--border) 1px, transparent 1px);
       background-size: 60px 60px;
-      opacity: 0.4;
+      opacity: 0.3;
+      pointer-events: none;
+      z-index: 0;
     }
     .hero-content {
       position: relative;
+      z-index: 1;
       max-width: 900px;
       width: 100%;
     }
@@ -153,10 +158,10 @@
     }
     h1 {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(3rem, 8vw, 6.5rem);
-      font-weight: 800;
-      line-height: 0.95;
-      letter-spacing: -0.04em;
+      font-size: clamp(2.2rem, 5.5vw, 4.8rem);
+      font-weight: 700;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
       margin-bottom: 1.5rem;
       animation: fadeUp 0.6s 0.1s ease both;
     }
@@ -256,10 +261,10 @@
     }
     h2 {
       font-family: 'Syne', sans-serif;
-      font-size: clamp(2rem, 5vw, 3.5rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1;
+      font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
       margin-bottom: 1.5rem;
     }
 
@@ -302,32 +307,44 @@
 
     /* STACK */
     #stack .stack-grid {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.75rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.2rem 3rem;
       margin-top: 2.5rem;
     }
-    .tech-pill {
+    .skill-item { display: flex; flex-direction: column; gap: 0.4rem; }
+    .skill-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .skill-name {
       display: flex;
       align-items: center;
       gap: 0.5rem;
-      padding: 0.6rem 1.2rem;
-      border: 1px solid var(--border);
-      border-radius: 100px;
-      font-size: 0.9rem;
+      font-size: 0.92rem;
+      color: var(--text);
+    }
+    .tech-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .skill-pct {
+      font-size: 0.78rem;
       color: var(--muted);
-      background: var(--card-bg);
-      transition: all 0.2s;
+      font-family: 'Syne', sans-serif;
     }
-    .tech-pill:hover {
-      border-color: var(--lime);
-      color: var(--lime);
-      transform: translateY(-2px);
+    .skill-bar-bg {
+      height: 5px;
+      background: var(--border);
+      border-radius: 100px;
+      overflow: hidden;
     }
-    .tech-dot {
-      width: 8px; height: 8px;
-      border-radius: 50%;
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: 100px;
+      background: var(--lime);
+      width: 0;
+      transition: width 1.2s cubic-bezier(0.4, 0, 0.2, 1);
     }
+    .skill-bar-fill.animated { width: var(--pct); }
 
     /* PROYECTOS */
     #proyectos .projects-grid {
@@ -531,15 +548,71 @@
     <div class="section-label">02 — Tecnologías</div>
     <h2 class="reveal">Mi <span style="color:var(--cyan)">stack</span></h2>
     <div class="stack-grid reveal">
-      <div class="tech-pill"><span class="tech-dot" style="background:#f7df1e"></span>JavaScript</div>
-      <div class="tech-pill"><span class="tech-dot" style="background:#e34f26"></span>HTML5</div>
-      <div class="tech-pill"><span class="tech-dot" style="background:#1572b6"></span>CSS3</div>
-      <div class="tech-pill"><span class="tech-dot" style="background:#61dafb"></span>React</div>
-      <div class="tech-pill"><span class="tech-dot" style="background:#ff2d20"></span>Laravel / Blade</div>
-      <div class="tech-pill"><span class="tech-dot" style="background:#f89820"></span>Java</div>
-      <div class="tech-pill"><span class="tech-dot" style="background:#4479a1"></span>MySQL</div>
-      <div class="tech-pill"><span class="tech-dot" style="background:#f05032"></span>Git</div>
-      <div class="tech-pill"><span class="tech-dot" style="background:#181717"></span>GitHub</div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name"><span class="tech-dot" style="background:#e34f26"></span>HTML5</span>
+          <span class="skill-pct">60%</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="--pct:60%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name"><span class="tech-dot" style="background:#1572b6"></span>CSS3</span>
+          <span class="skill-pct">55%</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="--pct:55%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name"><span class="tech-dot" style="background:#f7df1e"></span>JavaScript</span>
+          <span class="skill-pct">45%</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="--pct:45%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name"><span class="tech-dot" style="background:#dd0031"></span>Angular</span>
+          <span class="skill-pct">55%</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="--pct:55%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name"><span class="tech-dot" style="background:#ff2d20"></span>Laravel / Blade</span>
+          <span class="skill-pct">50%</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="--pct:50%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name"><span class="tech-dot" style="background:#f89820"></span>Java</span>
+          <span class="skill-pct">45%</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="--pct:45%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name"><span class="tech-dot" style="background:#4479a1"></span>MySQL</span>
+          <span class="skill-pct">50%</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="--pct:50%"></div></div>
+      </div>
+
+      <div class="skill-item">
+        <div class="skill-header">
+          <span class="skill-name"><span class="tech-dot" style="background:#f05032"></span>Git / GitHub</span>
+          <span class="skill-pct">40%</span>
+        </div>
+        <div class="skill-bar-bg"><div class="skill-bar-fill" style="--pct:40%"></div></div>
+      </div>
+
     </div>
   </section>
 
@@ -666,6 +739,15 @@
       requestAnimationFrame(animateCursor);
     }
     animateCursor();
+
+    // Skill bars animation
+    const bars = document.querySelectorAll('.skill-bar-fill');
+    const barObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('animated');
+      });
+    }, { threshold: 0.3 });
+    bars.forEach(b => barObserver.observe(b));
 
     // Reveal on scroll
     const reveals = document.querySelectorAll('.reveal');

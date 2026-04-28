@@ -346,7 +346,29 @@
     }
     .skill-bar-fill.animated { width: var(--pct); }
 
-    /* PROYECTOS */
+    /* FORMACIÓN */
+    .edu-grid { display: flex; flex-direction: column; gap: 1rem; margin-top: 2rem; }
+    .edu-card {
+      background: var(--card-bg); border: 1px solid var(--border);
+      border-radius: 14px; padding: 1.5rem 1.8rem;
+      display: grid; grid-template-columns: 1fr auto;
+      gap: 0.3rem 2rem; align-items: start;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .edu-card:hover { border-color: var(--lime); transform: translateY(-2px); }
+    .edu-title { font-weight: 600; font-size: 1rem; margin-bottom: 0.2rem; }
+    .edu-center { font-size: 0.85rem; color: var(--muted); }
+    .edu-year {
+      font-family: 'Syne', sans-serif; font-size: 0.78rem;
+      color: var(--lime); background: rgba(200,241,53,0.1);
+      border: 1px solid rgba(200,241,53,0.25); border-radius: 100px;
+      padding: 0.25rem 0.75rem; white-space: nowrap; text-align: center;
+      align-self: center;
+    }
+    .edu-badge {
+      display: inline-flex; align-items: center; gap: 0.4rem;
+      font-size: 0.75rem; color: var(--muted); margin-top: 0.4rem;
+    }
     #proyectos .projects-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -497,6 +519,7 @@
     <ul class="nav-links">
       <li><a href="#sobre-mi">Sobre mí</a></li>
       <li><a href="#stack">Stack</a></li>
+      <li><a href="#formacion">Formación</a></li>
       <li><a href="#proyectos">Proyectos</a></li>
       <li><a href="#contacto">Contacto</a></li>
     </ul>
@@ -534,13 +557,13 @@
       <div class="about-text">
         <h2>Código con<br><span style="color:var(--pink)">propósito</span></h2>
         <p>
-          Soy <span>César</span>, desarrollador web con base en Santander. Acabo de terminar mi Grado Superior en Desarrollo de Aplicaciones Web en febrero de 2026.
+          Soy <span>César</span>, desarrollador web con base en Santander. Combino dos grados superiores — uno en <span>Diseño y Edición de Publicaciones</span> y otro en <span>Desarrollo de Aplicaciones Web</span> — lo que me da una visión única entre el diseño y el código.
         </p>
         <p>
-          Me apasiona construir productos digitales que tengan tanto <span>buena arquitectura</span> como una <span>interfaz cuidada</span>. El código limpio y la experiencia de usuario van de la mano para mí.
+          Soy una persona <span>comprometida con el trabajo bien hecho</span>, versátil y con capacidad de adaptarme a cualquier entorno. Me esfuerzo cada día por seguir aprendiendo y las empresas en las que he estado han reconocido mi rendimiento y dedicación.
         </p>
         <p>
-          Cuando no estoy programando, estoy aprendiendo algo nuevo — ya sea una librería, un patrón de diseño o un concepto de backend.
+          Busco una oportunidad donde pueda aportar desde el primer día y seguir creciendo como profesional.
         </p>
       </div>
       <div class="about-stats">
@@ -550,7 +573,7 @@
         </div>
         <div class="stat-card">
           <div class="stat-number">2</div>
-          <div class="stat-label">Años de formación</div>
+          <div class="stat-label">Grados superiores</div>
         </div>
         <div class="stat-card">
           <div class="stat-number">∞</div>
@@ -637,9 +660,36 @@
     </div>
   </section>
 
+  <!-- FORMACIÓN -->
+  <section id="formacion">
+    <div class="section-label">03 — Formación</div>
+    <h2 class="reveal">Mi <span style="color:var(--purple)">trayectoria</span></h2>
+    <div class="edu-grid reveal">
+
+      <div class="edu-card">
+        <div>
+          <div class="edu-title">FPGS Desarrollo de Aplicaciones Web</div>
+          <div class="edu-center">IES · Santander</div>
+          <div class="edu-badge">💻 Desarrollo Web · Frontend · Backend · Bases de datos</div>
+        </div>
+        <div class="edu-year">2024 — 2026</div>
+      </div>
+
+      <div class="edu-card">
+        <div>
+          <div class="edu-title">FPGS Diseño y Edición de Publicaciones Impresas y Multimedia</div>
+          <div class="edu-center">IES La Albericia · Santander</div>
+          <div class="edu-badge">🎨 Diseño gráfico · Maquetación · Multimedia</div>
+        </div>
+        <div class="edu-year">2016 — 2018</div>
+      </div>
+
+    </div>
+  </section>
+
   <!-- PROYECTOS -->
   <section id="proyectos">
-    <div class="section-label">03 — Trabajo</div>
+    <div class="section-label">04 — Trabajo</div>
     <h2 class="reveal">Proyectos <span style="color:var(--orange)">destacados</span></h2>
     <div class="projects-grid">
 
@@ -733,7 +783,7 @@
 
   <!-- CONTACTO -->
   <section id="contacto">
-    <div class="section-label">04 — Contacto</div>
+    <div class="section-label">05 — Contacto</div>
     <h2 class="reveal">¿Hablamos?</h2>
     <p class="reveal">Estoy abierto a oportunidades laborales, colaboraciones o simplemente a conocer gente del sector.</p>
     <div class="contact-links reveal">
